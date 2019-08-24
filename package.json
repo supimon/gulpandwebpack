@@ -20,5 +20,10 @@
   "bugs": {
     "url": "https://github.com/supimon/gulpandwebpack/issues"
   },
-  "homepage": "https://github.com/supimon/gulpandwebpack#readme"
+  "homepage": "https://github.com/supimon/gulpandwebpack#readme",
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "webpack": "^4.39.2",
+    "webpack-cli": "^3.3.7"
+  }
 }
