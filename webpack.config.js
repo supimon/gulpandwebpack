@@ -7,7 +7,7 @@ const config = {
     comp2_page: "./src/pages/comp2_page/comp2_page.js"
   },
   output: {
-    filename: "[name].min.js"
+    filename: "./[name]/[name].min.js"
   },
   plugins: [
     new UglifyJSPlugin({
