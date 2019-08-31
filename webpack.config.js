@@ -10,7 +10,7 @@ const PATHS = {
 const commonConfig = merge([
   {
     entry: {
-      page1: "./src/pages/page1/page2.js",
+      page1: "./src/pages/page1/page1.js",
       page2: "./src/pages/page2/page2.js"
     },
     output: {
@@ -21,7 +21,22 @@ const commonConfig = merge([
   parts.loadJavaScript({ include: PATHS.app })
 ]);
 
-const productionConfig = merge([]);
+const productionConfig = merge([
+  {
+    optimization: {
+      splitChunks: {
+        cacheGroups: {
+          commons: {
+            name: "commons",
+            chunks: "all",
+            minChunks: 2,
+            enforce: true
+          }
+        }
+      }
+    }
+  }
+]);
 
 const developmentConfig = merge([]);
 
