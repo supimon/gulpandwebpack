@@ -41,10 +41,4 @@ const productionConfig = merge([
 
 const developmentConfig = merge([]);
 
-module.exports = mode => {
-  if (mode === "production") {
-    return merge(commonConfig, productionConfig, { mode });
-  }
-
-  return merge(commonConfig, developmentConfig, { mode });
-};
+module.exports = merge(commonConfig, productionConfig, { mode: "production" });
