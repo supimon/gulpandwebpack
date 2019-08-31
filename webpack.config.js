@@ -7,7 +7,19 @@ const PATHS = {
   dist: path.join(__dirname, "dist")
 };
 
-const commonConfig = merge([parts.loadJavaScript({ include: PATHS.app })]);
+const commonConfig = merge([
+  {
+    entry: {
+      page1: "./src/pages/page1/page2.js",
+      page2: "./src/pages/page2/page2.js"
+    },
+    output: {
+      filename: "[name].js",
+      path: PATHS.dist
+    }
+  },
+  parts.loadJavaScript({ include: PATHS.app })
+]);
 
 const productionConfig = merge([]);
 
