@@ -1,0 +1,27 @@
+{
+  "name": "gulpandwebpack",
+  "version": "1.0.0",
+  "description": "A starter kit for AEM frontend development",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/supimon/gulpandwebpack.git"
+  },
+  "author": "Supi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/supimon/gulpandwebpack/issues"
+  },
+  "homepage": "https://github.com/supimon/gulpandwebpack#readme",
+  "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "babel-loader": "^8.0.6",
+    "webpack": "^4.39.3",
+    "webpack-cli": "^3.3.7",
+    "webpack-merge": "^4.2.2"
+  }
+}

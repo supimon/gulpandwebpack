@@ -1,5 +1,5 @@
-const merge = require("webpack-merge");
 const path = require("path");
+const merge = require("webpack-merge");
 const parts = require("./config/webpack.parts");
 
 const PATHS = {
@@ -7,47 +7,16 @@ const PATHS = {
   dist: path.join(__dirname, "dist")
 };
 
-const commonJSConfig = merge([
-  {
-    entry: {
-      "./assets/js/vendor": "./src/pages/vendor/project_vendor.js",
-      "./page1/js/page1": "./src/pages/page1/page1.js",
-      "./page2/js/page2": "./src/pages/page2/page2.js"
-    },
-    output: {
-      path: path.resolve(__dirname, "dist"),
-      filename: "[name].js"
-    }
-  },
-  parts.loadJavaScript()
-]);
+const commonConfig = merge([parts.loadJavaScript({ include: PATHS.app })]);
 
-const commonCSSConfig = merge([
-  {
-    entry: {
-      "./assets/css/vendor": "./src/pages/vendor/project_vendor.scss",
-      "./page1/css/page1": "./src/pages/page1/page1.scss",
-      "./page2/css/page2": "./src/pages/page2/page2.scss"
-    }
+const productionConfig = merge([]);
+
+const developmentConfig = merge([]);
+
+module.exports = mode => {
+  if (mode === "production") {
+    return merge(commonConfig, productionConfig, { mode });
   }
-]);
-const prod = merge([
-  parts.extractCSS({
-    use: ["css-loader", parts.autoprefix(), "sass-loader"]
-  }),
-  parts.minifyJavaScript(),
-  parts.minifyCSS({
-    options: {
-      discardComments: {
-        removeAll: true
-      },
-      safe: true
-    }
-  })
-]);
-const dev = merge([parts.loadCSS()]);
 
-module.exports = {
-  prodWebpack: merge(commonJSConfig, commonCSSConfig, prod),
-  devWebpack: merge(commonJSConfig, commonCSSConfig, dev)
+  return merge(commonConfig, developmentConfig, { mode });
 };
