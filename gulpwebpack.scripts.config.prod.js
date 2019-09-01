@@ -10,8 +10,8 @@ const PATHS = {
 const commonConfig = merge([
   {
     entry: {
-      page1: "./src/pages/page1/page1.js",
-      page2: "./src/pages/page2/page2.js"
+      "./page1/page1": "./src/pages/page1/page1.js",
+      "./page2/page2": "./src/pages/page2/page2.js"
     },
     output: {
       filename: "[name].js",
