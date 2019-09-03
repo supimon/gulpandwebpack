@@ -10,15 +10,13 @@ const PATHS = {
 const commonConfig = merge([
   {
     entry: {
-      "./page1/page1": "./src/pages/page1/page1.js",
-      "./page2/page2": "./src/pages/page2/page2.js"
+      "./page1/page1": "./src/pages/page1/page1scss.js",
+      "./page2/page2": "./src/pages/page2/page2scss.js"
     },
     output: {
-      filename: "[name].js",
       path: PATHS.dist
     }
-  },
-  parts.loadJavaScript({ include: PATHS.app })
+  }
 ]);
 
 const productionConfig = merge([
@@ -26,8 +24,7 @@ const productionConfig = merge([
     optimization: {
       splitChunks: {
         cacheGroups: {
-          commons: {
-            filename: "./commons/commons[id].js",
+          styles: {
             chunks: "all",
             minChunks: 2,
             enforce: true
@@ -36,7 +33,19 @@ const productionConfig = merge([
       }
     }
   },
-  parts.minifyJavaScript()
+  parts.extractCSS({
+    use: ["css-loader", parts.autoprefix(), "sass-loader"]
+  }),
+  parts.minifyCSS({
+    options: {
+      discardComments: {
+        removeAll: true
+      },
+      // Run cssnano in safe mode to avoid
+      // potentially unsafe transformations.
+      safe: true
+    }
+  })
 ]);
 
 const developmentConfig = merge([]);
