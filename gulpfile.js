@@ -76,7 +76,7 @@ function buildPages() {
     .pipe(pug({ pretty: true }))
     .pipe(gulp.dest(paths.root));
 }
-exports.build = gulp.series(clean, gulp.parallel(buildScripts, buildStyles));
+
 exports.fullbuild = gulp.series(
   clean,
   gulp.parallel(buildScripts, buildStyles),
