@@ -1,6 +1,6 @@
 const path = require("path");
 const merge = require("webpack-merge");
-const parts = require("./config/webpack.parts");
+const parts = require("./webpack.parts");
 
 const PATHS = {
   app: path.join(__dirname, "src"),
@@ -10,8 +10,8 @@ const PATHS = {
 const commonConfig = merge([
   {
     entry: {
-      page1: "./src/pages/page1/page1.js",
-      page2: "./src/pages/page2/page2.js"
+      "./page1/page1": "./src/pages/page1/page1.js",
+      "./page2/page2": "./src/pages/page2/page2.js"
     },
     output: {
       filename: "[name].js",
@@ -27,7 +27,7 @@ const productionConfig = merge([
       splitChunks: {
         cacheGroups: {
           commons: {
-            name: "./commons/commons",
+            filename: "./commons/commons[id].js",
             chunks: "all",
             minChunks: 2,
             enforce: true
@@ -41,10 +41,4 @@ const productionConfig = merge([
 
 const developmentConfig = merge([]);
 
-module.exports = mode => {
-  if (mode === "production") {
-    return merge(commonConfig, productionConfig, { mode });
-  }
-
-  return merge(commonConfig, developmentConfig, { mode });
-};
+module.exports = merge(commonConfig, productionConfig, { mode: "production" });

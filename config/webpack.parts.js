@@ -3,7 +3,6 @@ const TerserPlugin = require("terser-webpack-plugin");
 const MiniCssExtractPlugin = require("extract-css-chunks-webpack-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const cssnano = require("cssnano");
-const FixStyleOnlyEntriesPlugin = require("webpack-fix-style-only-entries");
 
 exports.minifyJavaScript = () => ({
   optimization: {
@@ -54,7 +53,7 @@ exports.extractCSS = ({ include, exclude, use = [] }) => {
         }
       ]
     },
-    plugins: [new FixStyleOnlyEntriesPlugin(), plugin]
+    plugins: [plugin]
   };
 };
 

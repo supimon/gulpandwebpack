@@ -2,14 +2,15 @@ const gulp = require("gulp");
 const webpack = require("webpack");
 const gulpWebpack = require("webpack-stream");
 const es = require("event-stream");
-const webpackProdScriptsConfig = require("./gulpwebpack.scripts.config.prod");
-const webpackProdStylesConfig = require("./gulpwebpack.jsstyles.config.prod");
+const webpackProdScriptsConfig = require("./config/webpack.scripts.prod");
+const webpackProdStylesConfig = require("./config/webpack.jsstyles.prod");
 const del = require("del");
 const pug = require("gulp-pug");
 const inject = require("gulp-inject");
 // paths
 const paths = {
   root: "./dist",
+  rootjs: "./dist/*.js",
   templates: {
     pages: "./src/pages/**/*.pug"
   },
@@ -29,6 +30,10 @@ const paths = {
 // clean dist
 function clean() {
   return del(paths.root);
+}
+// clean unwanted JS from root
+function cleanJS() {
+  return del(paths.rootjs);
 }
 // env = production
 function buildScripts() {
@@ -75,5 +80,6 @@ exports.build = gulp.series(clean, gulp.parallel(buildScripts, buildStyles));
 exports.fullbuild = gulp.series(
   clean,
   gulp.parallel(buildScripts, buildStyles),
-  buildPages
+  buildPages,
+  cleanJS
 );

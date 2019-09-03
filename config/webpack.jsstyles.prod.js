@@ -1,6 +1,6 @@
 const path = require("path");
 const merge = require("webpack-merge");
-const parts = require("./config/webpack.parts");
+const parts = require("./webpack.parts");
 
 const PATHS = {
   app: path.join(__dirname, "src"),
