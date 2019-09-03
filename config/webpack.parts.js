@@ -1,5 +1,6 @@
 const TerserPlugin = require("terser-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+//const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const MiniCssExtractPlugin = require("extract-css-chunks-webpack-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const cssnano = require("cssnano");
 const FixStyleOnlyEntriesPlugin = require("webpack-fix-style-only-entries");
@@ -38,7 +39,8 @@ exports.loadCSS = ({ include, exclude } = {}) => ({
 
 exports.extractCSS = ({ include, exclude, use = [] }) => {
   const plugin = new MiniCssExtractPlugin({
-    filename: "[name].css"
+    filename: "[name].css",
+    chunkFilename: "[id].css"
   });
 
   return {

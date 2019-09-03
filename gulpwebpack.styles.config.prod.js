@@ -20,6 +20,21 @@ const commonConfig = merge([
 ]);
 
 const productionConfig = merge([
+  {
+    optimization: {
+      splitChunks: {
+        cacheGroups: {
+          styles: {
+            name: "./commons/commons",
+            test: /[\\/]node_modules[\\/]/,
+            chunks: "all",
+            minChunks: 2,
+            enforce: true
+          }
+        }
+      }
+    }
+  },
   parts.extractCSS({
     use: ["css-loader", parts.autoprefix(), "sass-loader"]
   }),
