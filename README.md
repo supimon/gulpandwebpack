@@ -10,7 +10,7 @@ And gulp will inject the files for you.
 
 - all the pages need to mandatorily have these common injections
 
-`//- commons:<file extension>`
+`//- commons:<file extension>`<br>
 `//- endinject`
 
 - take a look any of the page pug files, for e.g. src/pages/page1/page1.pug
