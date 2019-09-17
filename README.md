@@ -4,14 +4,10 @@
 
 <br>
 
-`git clone https://github.com/supimon/gulpandwebpack.git`
-<br>
-
-`npm install`
-<br>
-
-`gulp fullbuild`
-<br>
+`git clone https://github.com/supimon/gulpandwebpack.git`<br>
+`cd gulpandwebpack`<br>
+`npm install`<br>
+`gulp fullbuild`<br>
 
 <br>
 Gulp basically is used for tranpiling pug, writing streams to disk, image optimisations and sprites, watching as well as for live-reloading.
