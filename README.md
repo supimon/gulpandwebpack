@@ -1,5 +1,10 @@
 # AEM frontend development environment
 
+# on gulp and webpack
+
+<br>
+<br>
+
 ## Working with pug files :
 
 - the only thing to be taken care of is the inclusion on CSS and JS files injection tags.
@@ -16,6 +21,7 @@ And gulp will inject the files for you.
 `//- endinject`
 
 - take a look any of the page pug files, for e.g. src/pages/page1/page1.pug
+  <br>
 
 ## Working with SCSS files (also applicable when working with LESS files):
 
@@ -28,6 +34,7 @@ And gulp will inject the files for you.
 - ### you will need to copy the sprite images manually to the pages folder as well as the commons folder under the dist folder as found necessary.
 - a gulp task "cleanJS" is run to clean the JS files that get created as a byproduct of producing the CSS chunks from within a JS file.
 - ### Note: the minimum chunks in the webpack config file should be equal to the total number of pages.
+  <br>
 
 ## Working with JS files:
 
@@ -36,6 +43,7 @@ And gulp will inject the files for you.
 - for e.g. src/components/comp1/comp1.js and src/components/comp2/comp2.js have the jquery import in common and both these files are imported into their corresponding page scripts (src/pages/page1/page1.js and src/pages/page2/page2.js). These page scripts also import the src/pages/vendor/proj_vendor.js file in common. Therefore both these common files get chunked and get placed in the commons folder within the dist folder.
 - They are also automatically inserted into the html via gulp inject tags.
 - ### Note: the minimum chunks in the webpack config file should be equal to the total number of pages.
+  <br>
 
 ## Remaining things to be done(although will not be done soon):
 
@@ -43,6 +51,7 @@ And gulp will inject the files for you.
 - to prepare an actual dev mode.
 - gulp tasks optimisation (as currently watch runs the entire tasks).
 - add sourcemaps
+  <br>
 
 ## Contact
 
