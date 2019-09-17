@@ -3,7 +3,7 @@
 - the only thing to be taken care of is the inclusion on CSS and JS files injection tags.
 - basically the format is as follows:
 
-`//- <identifier>:<file extension>`
+`//- <identifier>:<file extension>`<br>
 `//- endinject`
 
 And gulp will inject the files for you.
