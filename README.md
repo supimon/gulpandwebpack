@@ -23,6 +23,7 @@ And gulp will inject the files for you.
 - importing bootstrap partials throw error so its better to create own partials by copying the necessary stuff and importing that file wherever necessary
 - component scss file (for e.g. src/components/comp1/comp1.scss) and component library scss file (src/components/vendor/comp_vendor.scss) will need to be imported together with the page scss file (for e.g. src/pages/page1/page1.scss) into a js file so that these files can take part in the chunking process.
 - the common css file produced as part of the chunking process is written to the common folder and is inserted into the pages.
+- ### you will need to copy the sprite images manually to the pages folder as well as the components folder as found necessary
 - a gulp task "cleanJS" is run to clean the JS files that get created as a byproduct of producing the CSS chunks from within a JS file.
 
 # Working with JS files:
@@ -36,7 +37,6 @@ And gulp will inject the files for you.
 
 - automate page configurations to the maximum extent possible
 - incorporate LESS flow
-- optimise images
 
 # Cons:
 
