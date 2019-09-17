@@ -11,7 +11,8 @@ const commonConfig = merge([
   {
     entry: {
       "./page1/page1": "./src/pages/page1/page1scss.js",
-      "./page2/page2": "./src/pages/page2/page2scss.js"
+      "./page2/page2": "./src/pages/page2/page2scss.js",
+      "./page3/page3": "./src/pages/page3/page3less.js"
     },
     output: {
       path: PATHS.dist
@@ -26,7 +27,7 @@ const productionConfig = merge([
         cacheGroups: {
           styles: {
             chunks: "all",
-            minChunks: 2,
+            minChunks: 3, // this should be equal to the total pages
             enforce: true
           }
         }
@@ -34,7 +35,8 @@ const productionConfig = merge([
     }
   },
   parts.extractCSS({
-    use: ["css-loader", parts.autoprefix(), "sass-loader"]
+    useScss: ["css-loader", parts.autoprefix(), "sass-loader"],
+    useLess: ["css-loader", parts.autoprefix(), "less-loader"]
   }),
   parts.minifyCSS({
     options: {

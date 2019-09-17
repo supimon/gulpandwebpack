@@ -23,20 +23,7 @@ exports.loadJavaScript = ({ include, exclude } = {}) => ({
   }
 });
 
-exports.loadCSS = ({ include, exclude } = {}) => ({
-  module: {
-    rules: [
-      {
-        test: /\.scss$/,
-        include,
-        exclude,
-        use: ["style-loader", "css-loader", "sass-loader"]
-      }
-    ]
-  }
-});
-
-exports.extractCSS = ({ include, exclude, use = [] }) => {
+exports.extractCSS = ({ include, exclude, useScss = [], useLess = [] }) => {
   const plugin = new MiniCssExtractPlugin({
     filename: "[name].css",
     chunkFilename: "./commons/commons[id].css"
@@ -49,7 +36,13 @@ exports.extractCSS = ({ include, exclude, use = [] }) => {
           test: /\.scss$/,
           include,
           exclude,
-          use: [MiniCssExtractPlugin.loader].concat(use)
+          use: [MiniCssExtractPlugin.loader].concat(useScss)
+        },
+        {
+          test: /\.less$/,
+          include,
+          exclude,
+          use: [MiniCssExtractPlugin.loader].concat(useLess)
         }
       ]
     },

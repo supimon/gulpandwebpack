@@ -22,10 +22,12 @@ const paths = {
     pages: "./src/pages/**/*.pug"
   },
   styles: {
-    allFiles: "./src/**/*.scss",
-    files: "./src/pages/**/*.scss",
+    allScssFiles: "./src/**/*.scss",
+    allLessFiles: "./src/**/*.less",
+    files: ["./src/pages/**/*.scss", "./src/pages/**/*.less"],
     page1: "./dist/page1/*.css",
     page2: "./dist/page2/*.css",
+    page3: "./dist/page3/*.css",
     commons: "./dist/commons/*.css"
   },
   scripts: {
@@ -33,6 +35,7 @@ const paths = {
     files: "./src/pages/**/*.js",
     page1: "./dist/page1/*.js",
     page2: "./dist/page2/*.js",
+    page3: "./dist/page3/*.js",
     commons: "./dist/commons/*.js"
   },
   images: {
@@ -71,7 +74,12 @@ function watchFiles() {
     startPath: "/dist/page1/page1.html"
   });
   watch(
-    [paths.styles.allFiles, paths.scripts.allFiles, paths.templates.allFiles],
+    [
+      paths.styles.allScssFiles,
+      paths.styles.allLessFiles,
+      paths.scripts.allFiles,
+      paths.templates.allFiles
+    ],
     gulp.series(
       clean,
       gulp.parallel(buildScripts, buildStyles),
@@ -107,6 +115,12 @@ function buildPages() {
       inject(
         es.merge(gulp.src(paths.styles.page2), gulp.src(paths.scripts.page2)),
         { name: "page2" }
+      )
+    )
+    .pipe(
+      inject(
+        es.merge(gulp.src(paths.styles.page3), gulp.src(paths.scripts.page3)),
+        { name: "page3" }
       )
     )
     .pipe(

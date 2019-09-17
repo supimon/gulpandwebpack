@@ -34,6 +34,8 @@
     "gulp-inject": "^5.0.4",
     "gulp-pug": "^4.0.1",
     "gulp.spritesmith": "^6.11.0",
+    "less": "^3.10.3",
+    "less-loader": "^5.0.0",
     "merge-stream": "^2.0.0",
     "mini-css-extract-plugin": "^0.8.0",
     "node-sass": "^4.12.0",

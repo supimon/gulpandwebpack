@@ -1,4 +1,6 @@
-# Working with pug files :
+# AEM frontend development environment
+
+## Working with pug files :
 
 - the only thing to be taken care of is the inclusion on CSS and JS files injection tags.
 - basically the format is as follows:
@@ -15,7 +17,7 @@ And gulp will inject the files for you.
 
 - take a look any of the page pug files, for e.g. src/pages/page1/page1.pug
 
-# Working with SCSS files (also applicable when working with LESS files):
+## Working with SCSS files (also applicable when working with LESS files):
 
 - in order to enable chunking within CSS files, it is mandatory to import them into a JS file. This file would just be a container for scss/less files.
 - as an example take a look at how this is done in here: src/pages/page1/page1scss.js
@@ -25,25 +27,23 @@ And gulp will inject the files for you.
 - the common css file produced as part of the chunking process is written to the common folder and is inserted into the pages.
 - ### you will need to copy the sprite images manually to the pages folder as well as the commons folder under the dist folder as found necessary.
 - a gulp task "cleanJS" is run to clean the JS files that get created as a byproduct of producing the CSS chunks from within a JS file.
+- ### Note: the minimum chunks in the webpack config file should be equal to the total number of pages.
 
-# Working with JS files:
+## Working with JS files:
 
 - working with JS files is pretty straightforward.
 - webpack will watch for duplicate import across multiple files and automatically chunk it into a common file.
 - for e.g. src/components/comp1/comp1.js and src/components/comp2/comp2.js have the jquery import in common and both these files are imported into their corresponding page scripts (src/pages/page1/page1.js and src/pages/page2/page2.js). These page scripts also import the src/pages/vendor/proj_vendor.js file in common. Therefore both these common files get chunked and get placed in the commons folder within the dist folder.
 - They are also automatically inserted into the html via gulp inject tags.
+- ### Note: the minimum chunks in the webpack config file should be equal to the total number of pages.
 
-# Remaining things to be done:
+## Remaining things to be done(although will not be done soon):
 
 - automate page configurations to the maximum extent possible
-- incorporate LESS flow
+- to prepare an actual dev mode.
+- gulp tasks optimisation (as currently watch runs the entire tasks).
+- add sourcemaps
 
-# Cons:
-
-- there is no dev mode.
-- changing any file runs the entire list of tasks.
-- no sourcemaps
-
-# Contact
+## Contact
 
 - supimon@gmail.com for picking up a fight

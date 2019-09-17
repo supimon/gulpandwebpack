@@ -11,7 +11,8 @@ const commonConfig = merge([
   {
     entry: {
       "./page1/page1": "./src/pages/page1/page1.js",
-      "./page2/page2": "./src/pages/page2/page2.js"
+      "./page2/page2": "./src/pages/page2/page2.js",
+      "./page3/page3": "./src/pages/page3/page3.js"
     },
     output: {
       filename: "[name].js",
@@ -29,7 +30,7 @@ const productionConfig = merge([
           commons: {
             filename: "./commons/commons[id].js",
             chunks: "all",
-            minChunks: 2,
+            minChunks: 3, // this should be equal to the total pages
             enforce: true
           }
         }
