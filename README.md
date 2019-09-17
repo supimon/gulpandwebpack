@@ -3,6 +3,17 @@
 # on gulp and webpack
 
 <br>
+
+`git clone https://github.com/supimon/gulpandwebpack.git`
+<br>
+
+`npm install`
+<br>
+
+`gulp fullbuild`
+<br>
+
+<br>
 Gulp basically is used for tranpiling pug, writing streams to disk, image optimisations and sprites, watching as well as for live-reloading.
 <br>
 Webpack is used for transpiling, bundling, minifying and chunking css as well as js files.
