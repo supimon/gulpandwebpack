@@ -22,6 +22,7 @@ And gulp will inject the files for you.
 
 - take a look any of the page pug files, for e.g. src/pages/page1/page1.pug
   <br>
+  <br>
 
 ## Working with SCSS files (also applicable when working with LESS files):
 
@@ -35,6 +36,7 @@ And gulp will inject the files for you.
 - a gulp task "cleanJS" is run to clean the JS files that get created as a byproduct of producing the CSS chunks from within a JS file.
 - ### Note: the minimum chunks in the webpack config file should be equal to the total number of pages.
   <br>
+  <br>
 
 ## Working with JS files:
 
@@ -44,6 +46,7 @@ And gulp will inject the files for you.
 - They are also automatically inserted into the html via gulp inject tags.
 - ### Note: the minimum chunks in the webpack config file should be equal to the total number of pages.
   <br>
+  <br>
 
 ## Remaining things to be done(although will not be done soon):
 
@@ -51,6 +54,7 @@ And gulp will inject the files for you.
 - to prepare an actual dev mode.
 - gulp tasks optimisation (as currently watch runs the entire tasks).
 - add sourcemaps
+  <br>
   <br>
 
 ## Contact
