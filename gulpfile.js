@@ -7,20 +7,25 @@ const webpackProdStylesConfig = require("./config/webpack.jsstyles.prod");
 const del = require("del");
 const pug = require("gulp-pug");
 const inject = require("gulp-inject");
+const { watch } = require("gulp");
+const browserSync = require("browser-sync").create();
 // paths
 const paths = {
   root: "./dist",
   rootjs: "./dist/*.js",
   templates: {
+    allFiles: "./src/**/*.pug",
     pages: "./src/pages/**/*.pug"
   },
   styles: {
+    allFiles: "./src/**/*.scss",
     files: "./src/pages/**/*.scss",
     page1: "./dist/page1/*.css",
     page2: "./dist/page2/*.css",
     commons: "./dist/commons/*.css"
   },
   scripts: {
+    allFiles: "./src/**/*.js",
     files: "./src/pages/**/*.js",
     page1: "./dist/page1/*.js",
     page2: "./dist/page2/*.js",
@@ -34,6 +39,24 @@ function clean() {
 // clean unwanted JS from root
 function cleanJS() {
   return del(paths.rootjs);
+}
+// watch files
+function watchFiles() {
+  browserSync.init({
+    server: {
+      baseDir: "./"
+    },
+    startPath: "/dist/page1/page1.html"
+  });
+  watch(
+    [paths.styles.allFiles, paths.scripts.allFiles, paths.templates.allFiles],
+    gulp.series(
+      clean,
+      gulp.parallel(buildScripts, buildStyles),
+      buildPages,
+      cleanJS
+    )
+  );
 }
 // env = production
 function buildScripts() {
@@ -74,12 +97,18 @@ function buildPages() {
       )
     )
     .pipe(pug({ pretty: true }))
-    .pipe(gulp.dest(paths.root));
+    .pipe(gulp.dest(paths.root))
+    .pipe(
+      browserSync.reload({
+        stream: true
+      })
+    );
 }
 
 exports.fullbuild = gulp.series(
   clean,
   gulp.parallel(buildScripts, buildStyles),
   buildPages,
-  cleanJS
+  cleanJS,
+  watchFiles
 );

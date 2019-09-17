@@ -48,6 +48,4 @@ const productionConfig = merge([
   })
 ]);
 
-const developmentConfig = merge([]);
-
 module.exports = merge(commonConfig, productionConfig, { mode: "production" });
