@@ -36,7 +36,6 @@ And gulp will inject the files for you.
 - a gulp task "cleanJS" is run to clean the JS files that get created as a byproduct of producing the CSS chunks from within a JS file.
 - ### Note: the minimum chunks in the webpack config file should be equal to the total number of pages.
   <br>
-  <br>
 
 ## Working with JS files:
 
@@ -45,7 +44,6 @@ And gulp will inject the files for you.
 - for e.g. src/components/comp1/comp1.js and src/components/comp2/comp2.js have the jquery import in common and both these files are imported into their corresponding page scripts (src/pages/page1/page1.js and src/pages/page2/page2.js). These page scripts also import the src/pages/vendor/proj_vendor.js file in common. Therefore both these common files get chunked and get placed in the commons folder within the dist folder.
 - They are also automatically inserted into the html via gulp inject tags.
 - ### Note: the minimum chunks in the webpack config file should be equal to the total number of pages.
-  <br>
   <br>
 
 ## Remaining things to be done(although will not be done soon):
