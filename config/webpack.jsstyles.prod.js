@@ -1,6 +1,7 @@
 const path = require("path");
 const merge = require("webpack-merge");
 const parts = require("./webpack.parts");
+const SassLintPlugin = require("sass-lint-webpack");
 
 const PATHS = {
   app: path.join(__dirname, "src"),
@@ -17,6 +18,9 @@ const commonConfig = merge([
     output: {
       path: PATHS.dist
     }
+  },
+  {
+    plugins: [new SassLintPlugin()]
   }
 ]);
 

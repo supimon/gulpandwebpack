@@ -68,6 +68,7 @@ And gulp will inject the files for you.
 - to prepare an actual dev mode.
 - gulp tasks optimisation (as currently watch runs the entire tasks).
 - add sourcemaps
+- BEM linting for LESS or converting SASS to LESS. **What you could also try is to get the final css and convert it to LESS using css to less tools online(for now)**.
   <br>
   <br>
 
